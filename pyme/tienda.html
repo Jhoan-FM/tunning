@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hakunamatata </title>
+    <link rel="stylesheet" href="style.css">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@400;700&display=swap');
+        body {
+            font-family: 'Roboto', sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            background: linear-gradient(45deg, #e3f2fd, #bbdefb);
+            background-image: url(fondo.jpg);
+            background-size: cover;
+            color: #333333ab;
+            text-align: center;
+            transition: background 0.5s, color 0.5s;
+        }
+        nav h1 {
+            color: #b5d5eb;
+            position: left;
+        }
+        .error-screen {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: #141413e0;
+            color: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            flex-direction: column;
+            font-size: 20px;
+        }
+        .container {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 10px;
+            text-align: left;
+            display: inline-block;
+            width: 300px;
+            background-color: #333;
+            color: #ddd;
+        }
+        .hidden {
+            display: none;
+        }
+        #easter-egg {
+            display: none;
+            background: rgba(0, 0, 0, 0.8);
+            color: #ffcc00;
+            padding: 20px;
+            border-radius: 10px;
+            position: fixed;
+            top: 20%;
+            border: 2px solid #333;
+        }
+        #map {
+            width: 80%;
+            height: 300px;
+            margin-top: 20px;
+            border: 2px solid #333;
+        }
+        .dark-mode {
+            background: #2c2c2c;
+            color: #f5f5f5;
+            position: inherit;
+        }
+        .toggle-button {
+            margin-top: 10px;
+            padding: 10px;
+            background: #1976d2;
+            color: white;
+            border: none;
+            cursor: pointer;
+            border-radius: 5px;
+            font-size: 16px;
+            transition: background 0.3s;
+        }
+        .toggle-button:hover {
+            background: #1565c0;
+        }
+        header h1 {
+            text-shadow: 0px 0px 10px #90caf9;
+            position: left;
+            text-align: left;
+        }
+        nav {
+            width: 100%;
+            background: #74777a;
+            padding: 10px 0;
+            text-align: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1000;
+        }
+        nav a {
+            color: white;
+            text-decoration: none;
+            font-size: 14px;
+            margin: 0 15px;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+        nav a:hover {
+            color: #bbdefb;
+        }
+        .page {
+            display: none;
+            width: 80%;
+            margin-top: 80px;
+            text-align: center;
+            font-style: italic;
+            font-size: medium;
+        }
+        .active {
+            display: block;
+        }
+        .product {
+            border: 1px solid #ddd;
+            padding: 20px;
+            margin: 10px;
+            text-align: left;
+            display: inline-block;
+            width: 300px;
+            background-color: #333;
+            color: #ddd;
+        }
+        .product img{
+            
+          max-width: 100%;
+          height: auto;
+        }
+        section{
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #6c7ea3de;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            text-align: center;
+        }
+        header p{
+            color: #ddd;
+            font-size: larger;
+            font-style: italic;
+            background-color: #fcf4f4;
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background: #6c7ea3de;
+            box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.2);
+            border-radius: 15px;
+            text-align: none;
+        }
+        
+    </style>
+</head>
+
+<body>
+    <div class="error-screen" id="errorScreen">
+        <h1> ERROR 404 <br>Haz clic para continuar...</h1>
+    </div>
+    
+    <nav>
+     <h1>🌌Wasakaka tunning 🌌  </h1>
+        <a href="#" onclick="showPage('home')">Inicio</a>
+        <a href="#" onclick="showPage('map-section')">Mapa</a>
+        <a href="#" onclick="showPage('about')">Sobre Nosotros</a>
+        <a href="#" onclick="showPage('products')">Productos</a> 
+        <button class="toggle-button" id="toggleDarkMode">Modo Oscuro</button>
+    </nav>
+    <header>
+       <p><h3>Modificación, venta y personalizacion de vehiculos.</h3></p>
+       
+    </header>
+    
+    <div id="home" class="page active">
+        
+        <div class="container">
+            <h2>Ingrese sus datos </h2>
+            <form id="infoForm">
+                <label for="name">Nombre:</label>
+                <input type="text" id="name" name="name" required><br><br>
+                <label for="name">ID:</label>
+                <input type="text" id="name" name="name" required><br><br>
+               
+                <label for="email">Correo electrónico:</label>
+                <input type="email" id="email" name="email" required><br><br>
+                
+                <button type="submit">Enviar</button>
+            </form>
+        </div>
+
+    </div>
+    
+    <div id="map-section" class="page">
+        <div id="map"></div>
+    </div>
+
+    <section>
+    <div id="about" class="page">
+        <p><h3>Somos un equipo dedicado a la modificación y personalizacion de vehiculos.</h3></p>
+        <p>En Wasakaka tunning nos especializamos en transformar vehículos comunes en máquinas únicas. 
+            Con años de experiencia en la industria del tuning, ofrecemos servicios de modificación personalizados
+             que van desde cambios estéticos hasta mejoras de rendimiento. Ya sea que busques un diseño más agresivo, 
+             un aumento en la potencia de tu motor o una experiencia de conducción completamente nueva, tenemos las herramientas y el conocimiento para hacerlo posible.
+
+            Nuestro equipo de expertos en automóviles trabaja con pasión y precisión para garantizar que cada proyecto se realice con los más altos estándares. 
+            Trabajamos con una amplia gama de marcas y modelos, ofreciendo soluciones para todos los gustos y necesidades. Además, 
+            contamos con accesorios y piezas de alta calidad, seleccionadas cuidadosamente para maximizar tanto el rendimiento como la estética de tu vehículo.</p>
+    </div>
+    </section>
+
+    <div id="products" class="page">
+        <h2>Nuestros Productos</h2>
+        <div class="product">
+            <img src="portada.jpg" alt="Producto 1">
+            <h3>BMW e36 </h3>
+            <p>Motor</p>
+                El BMW E36 ofrecía motores de cuatro y seis cilindros en línea. 
+                El motor 1.8 litros de cuatro cilindros era uno de los más destacados. 
+                El motor 2.5 litros de seis cilindros era uno de los más destacados. 
+                El motor 320i E36 tenía un motor de seis cilindros en línea de 2.0 litros. 
+               <p>Carrocería </p> 
+                El BMW E36 estuvo disponible en berlina de 4 puertas, Touring de 5 puertas, coupé de 2 puertas y cabrio.
+                La silueta de los modelos de 2 y 4 puertas variaba más que en la generación anterior.</p>
+            <p>Precio: $8,000.99</p>
+        </div>
+        <div class="product">
+            <img src="producto2.jpg" alt="Producto 2">
+            <h3>Nissan 240SX</h3>
+            <p>Especificaciones del motor </p>
+              <p> Potencia máxima: 155 CV / 115 kW
+                Par máximo: 200 Nm
+                Cilindrada: 2.4 litros (KA24DE)
+                Número de cilindros: 4, en línea
+                Modelo de motor 
+                De 1989 a 1990 se utilizó el motor KA24E
+                De 1990 a 1998 se utilizó el motor KA24DE</p>
+            <p>Precio: $10,000.99</p>
+        </div>
+        <div class="product">
+            <img src="producto3.jpg" alt="Producto 3">
+            <h3>Nissan Skyline (R33) GT-R</h3>
+            <p>Detalles del motor RB26DETT</p>
+                La serie RB se refiere a la familia de motores de seis cilindros en línea.
+                El 26 indica la cilindrada de 2.6 litros.
+                El DE significa doble árbol de levas e inyección electrónica de combustible.
+                El TT indica doble turbo.
+                <p>del motor RB26DETT en el R33 </p> 
+                El R33 mejoró el par motor gracias a cambios en la aerodinámica del turbocompresor, el tubo de descarga del turbo y el intercooler.
+                El núcleo del turbo cambió de un cojinete de deslizamiento a uno de bolas.</p>
+            <p>Precio: $6,000.99</p>
+        </div>
+    </div>
+    
+    <div id="easter-egg"> ¡Haz encontrado el mejor lugar para montarte hoy mismo! </div>
+    
+    
+    <footer>
+        <p>&copy; 2025 - Crypto Universe </p>
+    </footer>
+    <script>
+        document.getElementById('errorScreen').addEventListener('click', function() {
+            this.classList.add('hidden');
+        });
+        
+        let secretCode = "EASTER";
+        let inputCode = "";
+        
+        document.addEventListener('keydown', function(event) {
+            inputCode += event.key.toUpperCase();
+            if (inputCode.includes(secretCode)) {
+                document.getElementById('easter-egg').style.display = 'block';
+                setTimeout(() => {
+                    document.getElementById('easter-egg').style.display = 'none';
+                }, 3000);
+                inputCode = "";
+            }
+        });
+
+        document.getElementById('toggleDarkMode').addEventListener('click', function() {
+            document.body.classList.toggle('dark-mode');
+        });
+        
+        function initMap() {
+            var map = new google.maps.Map(document.getElementById('map'), {
+                center: { lat: -34.603722, lng: -58.381592 },
+                zoom: 12
+            });
+        }
+        
+        function showPage(pageId) {
+            document.querySelectorAll('.page').forEach(page => page.classList.remove('active'));
+            document.getElementById(pageId).classList.add('active');
+        }
+
+        document.getElementById('infoForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+            alert('¡Error inesperado! Inténtalo de nuevo más tarde.');
+        });
+
+        // Función para mostrar el easter egg
+        function showEasterEgg() {
+            const egg = document.getElementById('easterEgg');
+            egg.style.display = 'block';
+            setTimeout(() => {
+                egg.style.display = 'none';
+            }, 5000); // Se ocultará después de 5 segundos
+        }
+    </script>
+    <script async defer src="https://maps.googleapis.com/maps/api/js?key=YOUR_API_KEY&callback=initMap"></script>
+</body>
+</html>
